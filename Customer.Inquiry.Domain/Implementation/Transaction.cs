@@ -7,6 +7,8 @@ namespace Customer.Inquiry.Domain.Implementation
 {
     public class Transaction : DomainBase, IDomainBase, ITransaction
     {
+        [MaxLength(10)]
+        public virtual int TransactionId { get; set; }
         [Column(TypeName = "decimal(16,2)")]
         public virtual decimal Amount { get; set; }
         [DataType(DataType.Currency)]

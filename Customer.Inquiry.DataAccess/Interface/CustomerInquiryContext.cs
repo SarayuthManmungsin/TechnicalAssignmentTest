@@ -12,7 +12,7 @@ namespace Customer.Inquiry.DataAccess
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ICustomer>().HasIndex(c => c.Email).IsUnique();
+            modelBuilder.Entity<ICustomer>().HasIndex(c => c.ContactEmail).IsUnique();
         }
     }
 }
