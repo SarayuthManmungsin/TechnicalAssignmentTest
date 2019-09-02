@@ -46,10 +46,8 @@
     <Compile Include="Implementation\Customer.cs" />
     <Compile Include="Implementation\DomainBase.cs" />
     <Compile Include="Implementation\DomainUser.cs" />
-    <Compile Include="Implementation\History.cs" />
     <Compile Include="Implementation\InquiryCriteria.cs" />
     <Compile Include="Implementation\Transaction.cs" />
-    <Compile Include="Interface\IHistory.cs" />
     <Compile Include="Interface\ICustomer.cs" />
     <Compile Include="Interface\IDomainBase.cs" />
     <Compile Include="Interface\IDomainUser.cs" />

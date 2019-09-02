@@ -52,8 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\CustomerRepository.cs" />
+    <Compile Include="Implementation\TransactionRepository.cs" />
     <Compile Include="Interface\ICustomerRepository.cs" />
     <Compile Include="Interface\IRepositoryBase.cs" />
+    <Compile Include="Interface\ITransactionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

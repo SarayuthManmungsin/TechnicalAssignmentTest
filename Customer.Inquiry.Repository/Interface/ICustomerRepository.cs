@@ -4,5 +4,6 @@ namespace Customer.Inquiry.Repository.Interface
 {
     public interface ICustomerRepository : IRepositoryBase<ICustomer>
     {
+        ICustomer GetCustomer(IInquiryCriteria criteria);
     }
 }

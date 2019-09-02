@@ -51,8 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementation\ICustomerInquiryContext.cs" />
-    <Compile Include="Interface\CustomerInquiryContext.cs" />
+    <Compile Include="Interface\ICustomerInquiryContext.cs" />
+    <Compile Include="Implementation\CustomerInquiryContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

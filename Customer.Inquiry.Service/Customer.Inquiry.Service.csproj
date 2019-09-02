@@ -171,6 +171,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -263,6 +265,14 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Customer.Inquiry.BusinessLogic\Customer.Inquiry.BusinessLogic.csproj">
+      <Project>{D75E372B-F298-49FC-A68D-8AF44FEBAED2}</Project>
+      <Name>Customer.Inquiry.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Customer.Inquiry.Domain\Customer.Inquiry.Domain.csproj">
+      <Project>{D64C2D1F-6596-48EA-8D31-7BBA103CF339}</Project>
+      <Name>Customer.Inquiry.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Customer.Inquiry.IoC\Customer.Inquiry.IoC.csproj">
       <Project>{a7193e3e-0447-4a35-9dc2-445e2319a537}</Project>
       <Name>Customer.Inquiry.IoC</Name>
@@ -270,6 +280,10 @@
     <ProjectReference Include="..\Customer.Inquiry.Utils\Customer.Inquiry.Utils.csproj">
       <Project>{deaaaebc-bffb-4ffd-953f-90999008d7c2}</Project>
       <Name>Customer.Inquiry.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Customer.Inquiry.ViewModel\Customer.Inquiry.ViewModel.csproj">
+      <Project>{460E1FA5-2CD4-45DD-B399-D7356521F2BA}</Project>
+      <Name>Customer.Inquiry.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

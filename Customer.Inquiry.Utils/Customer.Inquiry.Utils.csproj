@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrencyUtils.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="ObjectFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

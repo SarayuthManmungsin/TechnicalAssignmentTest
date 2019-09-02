@@ -8,54 +8,46 @@ using System.Threading.Tasks;
 
 namespace Customer.Inquiry.Repository.Implementation
 {
-    public class CustomerRepository : ICustomerRepository
+    public class TransactionRepository : ITransactionRepository
     {
         public async void Delete(int internalId)
         {
             using (var context = new CustomerInquiryContext())
             {
-                var customer = new Domain.Implementation.Customer { Id = internalId };
-                context.Customers.Attach(customer);
-                context.Customers.Remove(customer);
+                var transaction = new Domain.Implementation.Transaction { Id = internalId };
+                context.Transactions.Attach(transaction);
+                context.Transactions.Remove(transaction);
                 await context.SaveChangesAsync();
             }
         }
 
-        public async Task<ICustomer> Get(int internalId)
+        public async Task<ITransaction> Get(int internalId)
         {
             using (var context = new CustomerInquiryContext())
             {
-                return await context.Customers.FindAsync(internalId);
+                return await context.Transactions.FindAsync(internalId);
             }
         }
 
-        public async Task<ICustomer> GetCustomer(IInquiryCriteria criteria)
+        public async Task<IList<ITransaction>> GetList()
         {
             using (var context = new CustomerInquiryContext())
             {
-                return await context.Customers.FindAsync(criteria.CustomerId, criteria.Email);
+                return await context.Transactions.ToListAsync();
             }
         }
 
-        public async Task<IList<ICustomer>> GetList()
+        public async Task<ITransaction> Save(ITransaction item)
         {
             using (var context = new CustomerInquiryContext())
             {
-                return await context.Customers.ToListAsync();
-            }
-        }
-
-        public async Task<ICustomer> Save(ICustomer item)
-        {
-            using (var context = new CustomerInquiryContext())
-            {
-                context.Customers.AddOrUpdate(item);
+                context.Transactions.AddOrUpdate(item);
                 await context.SaveChangesAsync();
                 return await Get(item.Id);
             }
         }
 
-        public async Task<ICustomer> Update(ICustomer item)
+        public async Task<ITransaction> Update(ITransaction item)
         {
             return await Save(item);
         }

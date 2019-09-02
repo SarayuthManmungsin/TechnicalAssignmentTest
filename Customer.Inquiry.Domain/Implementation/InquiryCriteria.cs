@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Customer.Inquiry.Domain.Implementation
 {
-    public class InquiryCriteria : DomainBase, IDomainBase, IInquiryCriteria
+    public class InquiryCriteria : IInquiryCriteria
     {
         [MaxLength(10, ErrorMessage = "Invalid Customer ID")]
         public virtual int CustomerId { get; set; }

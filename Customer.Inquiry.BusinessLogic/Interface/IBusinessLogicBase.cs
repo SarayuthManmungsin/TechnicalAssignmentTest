@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Customer.Inquiry.Repository.Interface
+namespace Customer.Inquiry.BusinessLogic.Interface
 {
-    public interface IRepositoryBase<T> where T : class, IDomainBase
+    public interface IBusinessLogicBase<T> where T : class, IDomainBase
     {
         Task<IList<T>> GetList();
         Task<T> Get(int internalId);
