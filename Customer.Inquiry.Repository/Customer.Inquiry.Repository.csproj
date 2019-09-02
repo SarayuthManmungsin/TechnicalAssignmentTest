@@ -51,11 +51,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\CustomerRepository.cs" />
+    <Compile Include="Interface\ICustomerRepository.cs" />
+    <Compile Include="Interface\IRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Customer.Inquiry.DataAccess\Customer.Inquiry.DataAccess.csproj">
+      <Project>{610451d7-7dac-4aa9-844d-a089a711d536}</Project>
+      <Name>Customer.Inquiry.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Customer.Inquiry.Domain\Customer.Inquiry.Domain.csproj">
+      <Project>{d64c2d1f-6596-48ea-8d31-7bba103cf339}</Project>
+      <Name>Customer.Inquiry.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Customer.Inquiry.Utils\Customer.Inquiry.Utils.csproj">
+      <Project>{deaaaebc-bffb-4ffd-953f-90999008d7c2}</Project>
+      <Name>Customer.Inquiry.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

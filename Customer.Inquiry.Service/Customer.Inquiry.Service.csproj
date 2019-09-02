@@ -262,6 +262,16 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Customer.Inquiry.IoC\Customer.Inquiry.IoC.csproj">
+      <Project>{a7193e3e-0447-4a35-9dc2-445e2319a537}</Project>
+      <Name>Customer.Inquiry.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Customer.Inquiry.Utils\Customer.Inquiry.Utils.csproj">
+      <Project>{deaaaebc-bffb-4ffd-953f-90999008d7c2}</Project>
+      <Name>Customer.Inquiry.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
