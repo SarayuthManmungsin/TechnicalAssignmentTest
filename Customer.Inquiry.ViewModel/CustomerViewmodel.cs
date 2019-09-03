@@ -27,7 +27,7 @@ namespace Customer.Inquiry.ViewModel
         }
 
         [MaxLength(10)]
-        public int customerID { get; set; }
+        public long customerID { get; set; }
 
         [MaxLength(30)]
         public string name { get; set; }

@@ -4,6 +4,9 @@
     {
         public static bool IsValidEmail(string email)
         {
+            if (string.IsNullOrEmpty(email))
+                return true;
+
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);
@@ -15,7 +18,7 @@
             }
         }
 
-        public static bool IsValidCustomerId(int? customerId)
+        public static bool IsValidCustomerId(long? customerId)
         {
             if (!customerId.HasValue)
                 return true;
@@ -23,14 +26,14 @@
             return IsInRange(customerId.Value, 10);
         }
 
-        public static bool IsInRange(int input, int range)
+        public static bool IsInRange(long input, int range)
         {
             return IsInRange(input.ToString(), range);
         }
 
         public static bool IsInRange(string input, int range)
         {
-            return input.Length > range;
+            return input.Length <= range;
         }
     }
 }

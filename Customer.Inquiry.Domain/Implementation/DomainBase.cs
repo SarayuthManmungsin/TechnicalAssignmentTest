@@ -8,6 +8,6 @@ namespace Customer.Inquiry.Domain.Implementation
     {
         [Key, Column(Order = 0), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Range(0, 9999999999)]
-        public virtual int Id { get; set; }
+        public virtual long Id { get; set; }
     }
 }

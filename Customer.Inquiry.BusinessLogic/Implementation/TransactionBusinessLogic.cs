@@ -16,12 +16,12 @@ namespace Customer.Inquiry.BusinessLogic.Implementation
             _transactionRepository = transactionRepository;
         }
 
-        public void Delete(int internalId)
+        public void Delete(long internalId)
         {
             _transactionRepository.Delete(internalId);
         }
 
-        public Task<ITransaction> Get(int internalId)
+        public Task<ITransaction> Get(long internalId)
         {
             return _transactionRepository.Get(internalId);
         }

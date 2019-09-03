@@ -26,12 +26,12 @@ namespace Customer.Inquiry.BusinessLogic.Implementation
             return customer;
         }
 
-        public void Delete(int internalId)
+        public void Delete(long internalId)
         {
             _customerRepository.Delete(internalId);
         }
 
-        public Task<IInquiryCustomer> Get(int internalId)
+        public Task<IInquiryCustomer> Get(long internalId)
         {
             return _customerRepository.Get(internalId);
         }

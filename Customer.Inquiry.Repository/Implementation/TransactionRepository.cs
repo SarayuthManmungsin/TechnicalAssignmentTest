@@ -11,7 +11,7 @@ namespace Customer.Inquiry.Repository.Implementation
 {
     public class TransactionRepository : ITransactionRepository
     {
-        public async void Delete(int internalId)
+        public async void Delete(long internalId)
         {
             using (var context = new CustomerInquiryContext())
             {
@@ -22,7 +22,7 @@ namespace Customer.Inquiry.Repository.Implementation
             }
         }
 
-        public async Task<ITransaction> Get(int internalId)
+        public async Task<ITransaction> Get(long internalId)
         {
             using (var context = new CustomerInquiryContext())
             {

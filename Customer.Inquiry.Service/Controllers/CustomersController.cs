@@ -33,7 +33,6 @@ namespace Customer.Inquiry.Service.Controllers
         [ValidateModel]
         public async Task<HttpResponseMessage> Post(InquiryCriteriaViewmodel inquiryCriteria)
         {
-
             if (inquiryCriteria.customerID <= 0 && string.IsNullOrEmpty(inquiryCriteria.email))
                 return CreateResponse(HttpStatusCode.BadRequest, "No inquiry criteria");
             else
