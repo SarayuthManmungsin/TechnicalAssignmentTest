@@ -1,8 +1,8 @@
-﻿using Customer.Inquiry.Domain.Implementation;
+﻿using Customer.Inquiry.Domain.Enum;
+using Customer.Inquiry.Domain.Implementation;
 using Customer.Inquiry.Domain.Interface;
-using System.ComponentModel.DataAnnotations;
 using Customer.Inquiry.Utils;
-using Customer.Inquiry.Domain.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace Customer.Inquiry.ViewModel
 {
@@ -12,14 +12,14 @@ namespace Customer.Inquiry.ViewModel
 
         public TransactionViewmodel(ITransaction transaction)
         {
-            transactionID = transaction.TransactionId;
+            id = transaction.TransactionId;
             date = transaction.Date.FromUnixTimestamp().ToString(Extension.DATE_FORMAT);
             amount = transaction.Amount.ToString();
             currency = transaction.CurrencyCode;
             status = transaction.Status.ToString();
         }
 
-        public int transactionID { get; set; }
+        public int id { get; set; }
 
         public string date { get; set; }
 
@@ -38,7 +38,7 @@ namespace Customer.Inquiry.ViewModel
                 Amount = double.Parse(amount),
                 CurrencyCode = currency,
                 Status = status.AsEnum<TransactionStatus>(),
-                TransactionId = transactionID
+                TransactionId = id
             };
         }
     }

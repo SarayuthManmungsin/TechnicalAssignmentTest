@@ -1,5 +1,8 @@
 ﻿using Customer.Inquiry.BusinessLogic.Interface;
+using Customer.Inquiry.Domain.Implementation;
 using Customer.Inquiry.Domain.Interface;
+using Customer.Inquiry.Service.Attributes;
+using Customer.Inquiry.Utils;
 using Customer.Inquiry.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,33 +26,49 @@ namespace Customer.Inquiry.Service.Controllers
         public async Task<HttpResponseMessage> Get()
         {
             IList<IInquiryCustomer> customers = await _customerBusinessLogic.GetList();
-            return CreateResponse(customers.Select(x => new CustomerViewmodel(x)));
+            return CreateResponse(customers.Select(x => new CustomerViewmodel(x, new InquiryCriteria { CustomerId = 1, Email = "b" })));
         }
 
         // POST api/customers
+        [ValidateModel]
         public async Task<HttpResponseMessage> Post(InquiryCriteriaViewmodel inquiryCriteria)
         {
+
             if (inquiryCriteria.customerID <= 0 && string.IsNullOrEmpty(inquiryCriteria.email))
                 return CreateResponse(HttpStatusCode.BadRequest, "No inquiry criteria");
             else
             {
+                if (!Validator.IsValidEmail(inquiryCriteria.email))
+                    return CreateResponse(HttpStatusCode.BadRequest, "Invalid Email");
+                if (!Validator.IsValidCustomerId(inquiryCriteria.customerID))
+                    return CreateResponse(HttpStatusCode.BadRequest, "Invalid Customer ID");
+
                 IInquiryCriteria criteria = inquiryCriteria.Convert();
-                await _customerBusinessLogic.GetCustomer(criteria);
-                return CreateResponse("");
+                IInquiryCustomer customer = await _customerBusinessLogic.GetCustomer(criteria);
+                if (customer == null)
+                    return CreateResponse(HttpStatusCode.NotFound, "Not found");
+
+                return CreateResponse(new CustomerViewmodel(customer, criteria));
             }
         }
 
         // PUT api/customers/x
         public async Task<HttpResponseMessage> Put(InquiryCriteriaViewmodel inquiryCriteria)
         {
+            if (inquiryCriteria.customerID <= 0 && string.IsNullOrEmpty(inquiryCriteria.email))
+                return CreateResponse(HttpStatusCode.BadRequest, "No inquiry criteria");
+
             IInquiryCriteria criteria = inquiryCriteria.Convert();
             IInquiryCustomer customer = await _customerBusinessLogic.GetCustomer(criteria);
-            return CreateResponse(HttpStatusCode.OK,"");
+            return CreateResponse(HttpStatusCode.OK, "");
         }
 
         // DELETE api/customers/x
         public async Task<HttpResponseMessage> Delete(InquiryCriteriaViewmodel inquiryCriteria)
         {
+            if (inquiryCriteria.customerID <= 0 && string.IsNullOrEmpty(inquiryCriteria.email))
+                return CreateResponse(HttpStatusCode.BadRequest, "No inquiry criteria");
+
             IInquiryCriteria criteria = inquiryCriteria.Convert();
             IInquiryCustomer customer = await _customerBusinessLogic.GetCustomer(criteria);
             _customerBusinessLogic.Delete(customer.Id);

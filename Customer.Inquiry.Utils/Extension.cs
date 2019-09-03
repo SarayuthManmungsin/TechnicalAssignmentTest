@@ -6,7 +6,7 @@ namespace Customer.Inquiry.Utils
     public static class Extension
     {
         private static DateTime _default = new DateTime(1970, 1, 1, 0, 0, 0);
-        public static readonly string DATE_FORMAT = "DD/MM/YY HH:MM";
+        public static readonly string DATE_FORMAT = "dd/MM/yyyy HH:MM";
 
         public static long ToUnixTimestamp(this string datetimeString)
         {

@@ -13,13 +13,17 @@ namespace Customer.Inquiry.ViewModel
             transactions = new List<TransactionViewmodel>();
         }
 
-        public CustomerViewmodel(IInquiryCustomer customer)
+        public CustomerViewmodel(IInquiryCustomer customer, IInquiryCriteria criteria)
         {
             customerID = customer.Id;
             name = customer.Name;
             email = customer.Email;
             mobile = customer.MobileNumber;
-            transactions = customer.Transactions.Select(x => new TransactionViewmodel(x)).ToList();
+
+            transactions = customer.Transactions.Select(x => new TransactionViewmodel(x)).OrderByDescending(x => x.date).Take(5).ToList();
+            transactions = criteria.HasAllCriteria ? transactions :
+                           criteria.HasOnlyEmail ? transactions.Take(1).ToList() :
+                           new List<TransactionViewmodel>();
         }
 
         [MaxLength(10)]

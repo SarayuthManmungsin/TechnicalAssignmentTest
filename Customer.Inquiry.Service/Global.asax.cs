@@ -17,6 +17,7 @@ namespace Customer.Inquiry.Service
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ObjectFactory.Initialize(SimpleInjectorIoCContainer.Prepare());
+            SwaggerConfig.Register();
             GlobalConfiguration.Configuration.EnsureInitialized();
         }
     }

@@ -42,7 +42,7 @@ namespace Customer.Inquiry.Repository.Implementation
         {
             using (var context = new CustomerInquiryContext())
             {
-                return await context.Customers.ToListAsync<IInquiryCustomer>();
+                return await context.Customers.Include(x => x.Transactions).ToListAsync<IInquiryCustomer>();
             }
         }
 
