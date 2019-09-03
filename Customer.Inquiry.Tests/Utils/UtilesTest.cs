@@ -2,6 +2,7 @@
 using Customer.Inquiry.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq;
 
 namespace Customer.Inquiry.Tests.Utils
 {
@@ -64,6 +65,14 @@ namespace Customer.Inquiry.Tests.Utils
             Assert.IsTrue(Validator.IsValidCustomerId(123456789));
             Assert.IsTrue(Validator.IsValidCustomerId(null));
             Assert.IsFalse(Validator.IsValidCustomerId(12345678901));
+        }
+
+        [TestMethod]
+        public void can_get_currency_codes()
+        {
+            Assert.IsTrue(CurrencyUtils.GetCurrencyCodes().Any());
+            Assert.IsTrue(CurrencyUtils.IsExist("eus"));
+            Assert.IsFalse(CurrencyUtils.IsExist("SOME_RANDOM"));
         }
     }
 }
