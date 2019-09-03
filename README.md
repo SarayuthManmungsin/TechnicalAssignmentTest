@@ -9,6 +9,6 @@ What we have,
 * Test data can be generating along with a database creation using current windows authorisation.
 * To generate a mockdata, tries execute a unit test on category => 'integration', this will automatically create a new database.
 * After a database has been created, a customer with id '1' with 6 transactions will be ready for test. (this case you'll get 5 recent transactions via an api calling according to a requirement)
-* On category 'unittest' was implemented following test requirement.
+* On category => 'unittest' was implemented following test requirement.
 * Swagger can be access via http://{endpoint}:{port}/swagger
 * GET /api/customers can be used as a data debugging route due it returns 'all' customers with a full json content regardless to a requirement.
