@@ -13,7 +13,6 @@ namespace Customer.Inquiry.Tests.Integration
     {
         private ICustomerBusinessLogic _customerBusinessLogic;
         private ITransactionBusinessLogic _transactionBusinessLogic;
-        private IInquiryCustomer _customer;
 
         public SetupDatabaseTest()
         {
@@ -26,10 +25,10 @@ namespace Customer.Inquiry.Tests.Integration
         [TestMethod]
         public void _01_can_save_new_customer()
         {
-            _customer = _customerBusinessLogic.GetCustomer(new InquiryCriteria { CustomerId = 1, Email = "user@domain.com" }).Result;
-            if (_customer == null)
+            IInquiryCustomer customer = _customerBusinessLogic.GetCustomer(new InquiryCriteria { CustomerId = 1, Email = "user@domain.com" }).Result;
+            if (customer == null)
             {
-                _customer = new InquiryCustomer
+                customer = new InquiryCustomer
                 {
                     Id = 1,
                     Name = "Firstname Lastname",
@@ -37,25 +36,25 @@ namespace Customer.Inquiry.Tests.Integration
                     MobileNumber = "0123456789"
                 };
 
-                _customer.Transactions.Add(CreateTransaction(1, 1234.56, "USD", TransactionStatus.Success));
-                _customer.Transactions.Add(CreateTransaction(1, 6543.21, "GBP", TransactionStatus.Canceled));
-                _customer.Transactions.Add(CreateTransaction(1, 1111.22, "USD", TransactionStatus.Failed));
-                _customer.Transactions.Add(CreateTransaction(1, 2222.23, "EUR", TransactionStatus.Success));
-                _customer.Transactions.Add(CreateTransaction(1, 3333.34, "THB", TransactionStatus.Canceled));
-                _customer.Transactions.Add(CreateTransaction(1, 7890.12, "USD", TransactionStatus.Failed));
+                customer.Transactions.Add(CreateTransaction(1, 1234.56, "USD", TransactionStatus.Success));
+                customer.Transactions.Add(CreateTransaction(1, 6543.21, "GBP", TransactionStatus.Canceled));
+                customer.Transactions.Add(CreateTransaction(1, 1111.22, "USD", TransactionStatus.Failed));
+                customer.Transactions.Add(CreateTransaction(1, 2222.23, "EUR", TransactionStatus.Success));
+                customer.Transactions.Add(CreateTransaction(1, 3333.34, "THB", TransactionStatus.Canceled));
+                customer.Transactions.Add(CreateTransaction(1, 7890.12, "USD", TransactionStatus.Failed));
 
-                _customerBusinessLogic.Save(_customer).Wait();
+                _customerBusinessLogic.Save(customer).Wait();
             }
 
-            Assert.IsNotNull(_customer);
-            Assert.IsNotNull(_customer.Transactions);
+            Assert.IsNotNull(customer);
+            Assert.IsNotNull(customer.Transactions);
         }
 
         [TestMethod]
         public void _02_can_get_customer()
         {
             IInquiryCustomer customer = _customerBusinessLogic.GetCustomer(new InquiryCriteria { CustomerId = 1, Email = "user@domain.com" }).Result;
-            Assert.IsNotNull(_customer.Transactions);
+            Assert.IsNotNull(customer.Transactions);
         }
 
         private Transaction CreateTransaction(int transactionId, double amount, string currencyCode, TransactionStatus status)
