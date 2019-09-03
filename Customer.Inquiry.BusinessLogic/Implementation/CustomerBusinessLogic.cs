@@ -10,15 +10,20 @@ namespace Customer.Inquiry.BusinessLogic.Implementation
     public class CustomerBusinessLogic : ICustomerBusinessLogic
     {
         private readonly ICustomerRepository _customerRepository;
+        private readonly ITransactionRepository _transactionRepository;
 
-        public CustomerBusinessLogic(ICustomerRepository customerRepository)
+        public CustomerBusinessLogic(
+            ICustomerRepository customerRepository,
+            ITransactionRepository transactionRepository)
         {
             _customerRepository = customerRepository;
+            _transactionRepository = transactionRepository;
         }
 
         public async Task<IInquiryCustomer> GetCustomer(IInquiryCriteria criteria)
         {
-            return await GetCustomer(criteria);
+            IInquiryCustomer customer = await _customerRepository.GetCustomer(criteria);
+            return customer;
         }
 
         public void Delete(int internalId)

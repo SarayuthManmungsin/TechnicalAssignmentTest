@@ -5,7 +5,7 @@ namespace Customer.Inquiry.Domain.Interface
     public interface ITransaction : IDomainBase
     {
         int TransactionId { get; set; }
-        decimal Amount { get; set; }
+        double Amount { get; set; }
         string CurrencyCode { get; set; }
         TransactionStatus Status { get; set; }
         long Date { get; set; }

@@ -7,7 +7,7 @@ namespace Customer.Inquiry.DataAccess
     {
         public CustomerInquiryContext() : base("name=CustomerInquiryConnectionString")
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<CustomerInquiryContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<CustomerInquiryContext>());
         }
 
         public DbSet<InquiryCustomer> Customers { get; set; }
@@ -16,6 +16,7 @@ namespace Customer.Inquiry.DataAccess
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<InquiryCustomer>().HasIndex(c => c.Email).IsUnique();
+            modelBuilder.Entity<InquiryCustomer>().HasMany(t => t.Transactions);
         }
     }
 }

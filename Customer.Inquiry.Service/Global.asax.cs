@@ -16,7 +16,7 @@ namespace Customer.Inquiry.Service
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ObjectFactory.Initialize(SimpleInjectorIoCContainer.Prepare(GlobalConfiguration.Configuration));
+            ObjectFactory.Initialize(SimpleInjectorIoCContainer.Prepare());
             GlobalConfiguration.Configuration.EnsureInitialized();
         }
     }

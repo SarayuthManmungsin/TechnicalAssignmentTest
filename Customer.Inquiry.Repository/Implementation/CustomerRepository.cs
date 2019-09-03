@@ -26,7 +26,7 @@ namespace Customer.Inquiry.Repository.Implementation
         {
             using (var context = new CustomerInquiryContext())
             {
-                return await context.Customers.FindAsync(internalId);
+                return await context.Customers.FirstOrDefaultAsync(x => x.Id == internalId);
             }
         }
 
@@ -34,7 +34,7 @@ namespace Customer.Inquiry.Repository.Implementation
         {
             using (var context = new CustomerInquiryContext())
             {
-                return await context.Customers.FindAsync(criteria.CustomerId, criteria.Email);
+                return await context.Customers.Include(x => x.Transactions).FirstOrDefaultAsync(x => x.Id == criteria.CustomerId || x.Email == criteria.Email);
             }
         }
 
@@ -51,9 +51,10 @@ namespace Customer.Inquiry.Repository.Implementation
             using (var context = new CustomerInquiryContext())
             {
                 context.Customers.AddOrUpdate(item as InquiryCustomer);
-                await context.SaveChangesAsync();
-                return await Get(item.Id);
+                context.SaveChanges();
             }
+
+            return await Get(item.Id);
         }
 
         public async Task<IInquiryCustomer> Update(IInquiryCustomer item)

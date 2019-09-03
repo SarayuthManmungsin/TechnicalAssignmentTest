@@ -3,11 +3,9 @@ using Customer.Inquiry.BusinessLogic.Interface;
 using Customer.Inquiry.Repository.Implementation;
 using Customer.Inquiry.Repository.Interface;
 using SimpleInjector;
-using SimpleInjector.Integration.Web.Mvc;
 using SimpleInjector.Integration.WebApi;
 using System;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace Customer.Inquiry.IoC
 {
@@ -15,17 +13,18 @@ namespace Customer.Inquiry.IoC
     {
         private static Container _container;
 
-        public static Func<Container> Prepare(HttpConfiguration config)
+        public static Func<Container> Prepare(bool prepareState = true)
         {
             _container = new Container();
 
-            _container.Register<ICustomerBusinessLogic, CustomerBusinessLogic>(Lifestyle.Transient);
-            _container.Register<ICustomerRepository, CustomerRepository>(Lifestyle.Transient);
+            _container.Register<ICustomerBusinessLogic, CustomerBusinessLogic>(Lifestyle.Singleton);
+            _container.Register<ICustomerRepository, CustomerRepository>(Lifestyle.Singleton);
 
-            _container.Register<ITransactionBusinessLogic, TransactionBusinessLogic>(Lifestyle.Transient);
-            _container.Register<ITransactionRepository, TransactionRepository>(Lifestyle.Transient);
+            _container.Register<ITransactionBusinessLogic, TransactionBusinessLogic>(Lifestyle.Singleton);
+            _container.Register<ITransactionRepository, TransactionRepository>(Lifestyle.Singleton);
 
-            _container.RegisterWebApiControllers(config);
+            if (prepareState)
+                _container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
 
             _container.Verify();
 

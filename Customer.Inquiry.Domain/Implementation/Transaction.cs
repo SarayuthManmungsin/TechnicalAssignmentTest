@@ -3,6 +3,7 @@ using Customer.Inquiry.Domain.Interface;
 using Customer.Inquiry.Utils;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Customer.Inquiry.Domain.Implementation
 {
@@ -17,12 +18,14 @@ namespace Customer.Inquiry.Domain.Implementation
 
         [RegularExpression(@"^\d+\.\d{0,2}$")]
         [Range(0, 9999999999999999.99)]
-        public virtual decimal Amount { get; set; }
+        public virtual double Amount { get; set; }
 
         public virtual string CurrencyCode { get; set; }
 
         public virtual TransactionStatus Status { get; set; }
 
         public virtual long Date { get; set; }
+
+        public virtual InquiryCustomer Customer { get; set; }
     }
 }

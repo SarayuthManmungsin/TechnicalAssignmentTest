@@ -40,11 +40,11 @@ namespace Customer.Inquiry.ViewModel
 
         public IInquiryCustomer Convert(CustomerViewmodel viewmodel)
         {
-            return new Domain.Implementation.InquiryCustomer
+            return new InquiryCustomer
             {
                 Email = viewmodel.email,
                 MobileNumber = viewmodel.mobile,
-                Transactions = viewmodel.transactions.Select(x => x.Convert())
+                Transactions = viewmodel.transactions.Select(x => x.Convert()).ToList()
             };
         }
     }

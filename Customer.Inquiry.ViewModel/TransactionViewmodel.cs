@@ -31,11 +31,11 @@ namespace Customer.Inquiry.ViewModel
 
         public string status { get; set; }
 
-        public ITransaction Convert()
+        public Transaction Convert()
         {
             return new Transaction
             {
-                Amount = decimal.Parse(amount),
+                Amount = double.Parse(amount),
                 CurrencyCode = currency,
                 Status = status.AsEnum<TransactionStatus>(),
                 TransactionId = transactionID
