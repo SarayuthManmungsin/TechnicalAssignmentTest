@@ -109,8 +109,6 @@
   <ItemGroup>
     <Compile Include="Integration\SetupDatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Controllers\ValuesControllerTest.cs" />
     <Compile Include="Utils\UtilesTest.cs" />
   </ItemGroup>
   <ItemGroup>

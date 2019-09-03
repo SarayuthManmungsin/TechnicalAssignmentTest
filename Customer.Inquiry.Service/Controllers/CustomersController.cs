@@ -1,7 +1,6 @@
 ﻿using Customer.Inquiry.BusinessLogic.Interface;
 using Customer.Inquiry.Domain.Implementation;
 using Customer.Inquiry.Domain.Interface;
-using Customer.Inquiry.Service.Attributes;
 using Customer.Inquiry.Utils;
 using Customer.Inquiry.ViewModel;
 using System.Collections.Generic;
@@ -30,7 +29,6 @@ namespace Customer.Inquiry.Service.Controllers
         }
 
         // POST api/customers
-        [ValidateModel]
         public async Task<HttpResponseMessage> Post(InquiryCriteriaViewmodel inquiryCriteria)
         {
             if (inquiryCriteria.customerID <= 0 && string.IsNullOrEmpty(inquiryCriteria.email))

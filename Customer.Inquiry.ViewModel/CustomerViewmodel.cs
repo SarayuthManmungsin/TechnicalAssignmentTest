@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using Customer.Inquiry.Domain.Implementation;
+﻿using Customer.Inquiry.Domain.Implementation;
 using Customer.Inquiry.Domain.Interface;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Customer.Inquiry.ViewModel
 {
@@ -26,20 +25,10 @@ namespace Customer.Inquiry.ViewModel
                            new List<TransactionViewmodel>();
         }
 
-        [MaxLength(10)]
         public long customerID { get; set; }
-
-        [MaxLength(30)]
         public string name { get; set; }
-
-        [MaxLength(25)]
-        [EmailAddress(ErrorMessage = "Invalid Email")]
         public string email { get; set; }
-
-        [MaxLength(10)]
-        [Phone]
-        public string mobile;
-
+        public string mobile { get; set; }
         public IList<TransactionViewmodel> transactions { get; set; }
 
         public IInquiryCustomer Convert(CustomerViewmodel viewmodel)
