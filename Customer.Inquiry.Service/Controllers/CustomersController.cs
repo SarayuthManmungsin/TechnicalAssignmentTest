@@ -1,16 +1,11 @@
 ﻿using Customer.Inquiry.BusinessLogic.Interface;
-using Customer.Inquiry.Domain.Implementation;
 using Customer.Inquiry.Domain.Interface;
 using Customer.Inquiry.ViewModel;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
 
 namespace Customer.Inquiry.Service.Controllers
 {
@@ -24,9 +19,10 @@ namespace Customer.Inquiry.Service.Controllers
             _customerBusinessLogic = customerBusinessLogic;
         }
 
+        // GET api/customers
         public async Task<HttpResponseMessage> Get()
         {
-            IList<ICustomer> customers = await _customerBusinessLogic.GetList();
+            IList<IInquiryCustomer> customers = await _customerBusinessLogic.GetList();
             return CreateResponse(customers.Select(x => new CustomerViewmodel(x)));
         }
 
@@ -38,18 +34,27 @@ namespace Customer.Inquiry.Service.Controllers
             else
             {
                 IInquiryCriteria criteria = inquiryCriteria.Convert();
+                await _customerBusinessLogic.GetCustomer(criteria);
                 return CreateResponse("");
             }
         }
 
         // PUT api/customers/x
-        public async Task<HttpResponseMessage> Put(int id, [FromBody]string value)
+        public async Task<HttpResponseMessage> Put(InquiryCriteriaViewmodel inquiryCriteria)
         {
+            IInquiryCriteria criteria = inquiryCriteria.Convert();
+            IInquiryCustomer customer = await _customerBusinessLogic.GetCustomer(criteria);
+            return CreateResponse(HttpStatusCode.OK,"");
         }
 
         // DELETE api/customers/x
-        public async void Delete(int id)
+        public async Task<HttpResponseMessage> Delete(InquiryCriteriaViewmodel inquiryCriteria)
         {
+            IInquiryCriteria criteria = inquiryCriteria.Convert();
+            IInquiryCustomer customer = await _customerBusinessLogic.GetCustomer(criteria);
+            _customerBusinessLogic.Delete(customer.Id);
+
+            return CreateResponse(HttpStatusCode.NotFound, "");
         }
     }
 }

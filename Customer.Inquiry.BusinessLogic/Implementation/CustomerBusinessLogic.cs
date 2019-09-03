@@ -16,7 +16,7 @@ namespace Customer.Inquiry.BusinessLogic.Implementation
             _customerRepository = customerRepository;
         }
 
-        public async Task<ICustomer> GetCustomer(IInquiryCriteria criteria)
+        public async Task<IInquiryCustomer> GetCustomer(IInquiryCriteria criteria)
         {
             return await GetCustomer(criteria);
         }
@@ -26,22 +26,22 @@ namespace Customer.Inquiry.BusinessLogic.Implementation
             _customerRepository.Delete(internalId);
         }
 
-        public Task<ICustomer> Get(int internalId)
+        public Task<IInquiryCustomer> Get(int internalId)
         {
             return _customerRepository.Get(internalId);
         }
 
-        public Task<IList<ICustomer>> GetList()
+        public Task<IList<IInquiryCustomer>> GetList()
         {
             return _customerRepository.GetList();
         }
 
-        public Task<ICustomer> Save(ICustomer item)
+        public Task<IInquiryCustomer> Save(IInquiryCustomer item)
         {
             return _customerRepository.Save(item);
         }
 
-        public Task<ICustomer> Update(ICustomer item)
+        public Task<IInquiryCustomer> Update(IInquiryCustomer item)
         {
             return _customerRepository.Update(item);
         }

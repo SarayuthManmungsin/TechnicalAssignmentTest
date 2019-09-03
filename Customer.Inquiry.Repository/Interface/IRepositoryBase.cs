@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Customer.Inquiry.Repository.Interface
 {
-    public interface IRepositoryBase<T> where T : class, IDomainBase
+    public interface IRepositoryBase<T>
     {
         Task<IList<T>> GetList();
         Task<T> Get(int internalId);

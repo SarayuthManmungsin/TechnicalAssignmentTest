@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Customer.Inquiry.BusinessLogic.Interface
 {
-    public interface ICustomerBusinessLogic : IBusinessLogicBase<ICustomer>
+    public interface ICustomerBusinessLogic : IBusinessLogicBase<IInquiryCustomer>
     {
-        Task<ICustomer> GetCustomer(IInquiryCriteria criteria);
+        Task<IInquiryCustomer> GetCustomer(IInquiryCriteria criteria);
     }
 }

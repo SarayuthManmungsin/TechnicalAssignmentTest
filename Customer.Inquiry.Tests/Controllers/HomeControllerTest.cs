@@ -1,7 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using Customer.Inquiry.Service.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Customer.Inquiry.Service;
-using Customer.Inquiry.Service.Controllers;
+using System.Web.Mvc;
 
 namespace Customer.Inquiry.Tests.Controllers
 {

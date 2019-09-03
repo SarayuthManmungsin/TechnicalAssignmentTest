@@ -2,7 +2,7 @@
 
 namespace Customer.Inquiry.Domain.Interface
 {
-    public interface ICustomer : IDomainUser
+    public interface IInquiryCustomer : IDomainUser
     {
         IEnumerable<ITransaction> Transactions { get; set; }
     }

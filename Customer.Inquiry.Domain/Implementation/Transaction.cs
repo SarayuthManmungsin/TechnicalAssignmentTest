@@ -13,6 +13,8 @@ namespace Customer.Inquiry.Domain.Implementation
             Date = DateTime.Now.ToUnixTimestamp();
         }
 
+        public virtual int TransactionId { get; set; }
+
         [RegularExpression(@"^\d+\.\d{0,2}$")]
         [Range(0, 9999999999999999.99)]
         public virtual decimal Amount { get; set; }
@@ -20,7 +22,7 @@ namespace Customer.Inquiry.Domain.Implementation
         public virtual string CurrencyCode { get; set; }
 
         public virtual TransactionStatus Status { get; set; }
-        
+
         public virtual long Date { get; set; }
     }
 }

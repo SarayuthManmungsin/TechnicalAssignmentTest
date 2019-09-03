@@ -13,7 +13,7 @@ namespace Customer.Inquiry.ViewModel
             transactions = new List<TransactionViewmodel>();
         }
 
-        public CustomerViewmodel(ICustomer customer)
+        public CustomerViewmodel(IInquiryCustomer customer)
         {
             customerID = customer.Id;
             name = customer.Name;
@@ -38,9 +38,9 @@ namespace Customer.Inquiry.ViewModel
 
         public IList<TransactionViewmodel> transactions { get; set; }
 
-        public ICustomer Convert(CustomerViewmodel viewmodel)
+        public IInquiryCustomer Convert(CustomerViewmodel viewmodel)
         {
-            return new Domain.Implementation.Customer
+            return new Domain.Implementation.InquiryCustomer
             {
                 Email = viewmodel.email,
                 MobileNumber = viewmodel.mobile,

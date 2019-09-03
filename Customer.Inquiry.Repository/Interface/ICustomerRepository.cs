@@ -1,9 +1,10 @@
 ﻿using Customer.Inquiry.Domain.Interface;
+using System.Threading.Tasks;
 
 namespace Customer.Inquiry.Repository.Interface
 {
-    public interface ICustomerRepository : IRepositoryBase<ICustomer>
+    public interface ICustomerRepository : IRepositoryBase<IInquiryCustomer>
     {
-        ICustomer GetCustomer(IInquiryCriteria criteria);
+        Task<IInquiryCustomer> GetCustomer(IInquiryCriteria criteria);
     }
 }

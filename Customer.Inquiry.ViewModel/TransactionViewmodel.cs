@@ -12,14 +12,14 @@ namespace Customer.Inquiry.ViewModel
 
         public TransactionViewmodel(ITransaction transaction)
         {
-            id = transaction.Id;
+            transactionID = transaction.TransactionId;
             date = transaction.Date.FromUnixTimestamp().ToString(Extension.DATE_FORMAT);
             amount = transaction.Amount.ToString();
             currency = transaction.CurrencyCode;
             status = transaction.Status.ToString();
         }
 
-        public int id { get; set; }
+        public int transactionID { get; set; }
 
         public string date { get; set; }
 
@@ -38,7 +38,7 @@ namespace Customer.Inquiry.ViewModel
                 Amount = decimal.Parse(amount),
                 CurrencyCode = currency,
                 Status = status.AsEnum<TransactionStatus>(),
-                Id = id
+                TransactionId = transactionID
             };
         }
     }

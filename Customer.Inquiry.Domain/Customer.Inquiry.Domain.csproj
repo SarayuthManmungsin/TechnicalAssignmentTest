@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -43,12 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\TransactionStatus.cs" />
-    <Compile Include="Implementation\Customer.cs" />
+    <Compile Include="Implementation\InquiryCustomer.cs" />
     <Compile Include="Implementation\DomainBase.cs" />
     <Compile Include="Implementation\DomainUser.cs" />
     <Compile Include="Implementation\InquiryCriteria.cs" />
     <Compile Include="Implementation\Transaction.cs" />
-    <Compile Include="Interface\ICustomer.cs" />
+    <Compile Include="Interface\IInquiryCustomer.cs" />
     <Compile Include="Interface\IDomainBase.cs" />
     <Compile Include="Interface\IDomainUser.cs" />
     <Compile Include="Interface\IInquiryCriteria.cs" />
@@ -60,6 +66,10 @@
       <Project>{deaaaebc-bffb-4ffd-953f-90999008d7c2}</Project>
       <Name>Customer.Inquiry.Utils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿using Customer.Inquiry.Domain.Interface;
+﻿using Customer.Inquiry.Domain.Implementation;
 using System;
 using System.Data.Entity;
 
@@ -6,7 +6,7 @@ namespace Customer.Inquiry.DataAccess
 {
     public interface ICustomerInquiryContext : IDisposable
     {
-        DbSet<ICustomer> Customers { get; set; }
-        DbSet<ITransaction> Transactions { get; set; }
+        DbSet<InquiryCustomer> Customers { get; set; }
+        DbSet<Transaction> Transactions { get; set; }
     }
 }

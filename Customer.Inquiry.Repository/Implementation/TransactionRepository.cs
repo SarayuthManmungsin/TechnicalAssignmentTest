@@ -1,4 +1,5 @@
 ﻿using Customer.Inquiry.DataAccess;
+using Customer.Inquiry.Domain.Implementation;
 using Customer.Inquiry.Domain.Interface;
 using Customer.Inquiry.Repository.Interface;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Customer.Inquiry.Repository.Implementation
         {
             using (var context = new CustomerInquiryContext())
             {
-                var transaction = new Domain.Implementation.Transaction { Id = internalId };
+                var transaction = new Transaction { Id = internalId };
                 context.Transactions.Attach(transaction);
                 context.Transactions.Remove(transaction);
                 await context.SaveChangesAsync();
@@ -33,7 +34,7 @@ namespace Customer.Inquiry.Repository.Implementation
         {
             using (var context = new CustomerInquiryContext())
             {
-                return await context.Transactions.ToListAsync();
+                return await context.Transactions.ToListAsync<ITransaction>();
             }
         }
 
@@ -41,7 +42,7 @@ namespace Customer.Inquiry.Repository.Implementation
         {
             using (var context = new CustomerInquiryContext())
             {
-                context.Transactions.AddOrUpdate(item);
+                context.Transactions.AddOrUpdate(item as Transaction);
                 await context.SaveChangesAsync();
                 return await Get(item.Id);
             }
