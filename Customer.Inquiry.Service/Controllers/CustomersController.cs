@@ -50,29 +50,5 @@ namespace Customer.Inquiry.Service.Controllers
                 return CreateResponse(new CustomerViewmodel(customer, criteria));
             }
         }
-
-        // PUT api/customers/x
-        public async Task<HttpResponseMessage> Put(InquiryCriteriaViewmodel inquiryCriteria)
-        {
-            if (inquiryCriteria.customerID <= 0 && string.IsNullOrEmpty(inquiryCriteria.email))
-                return CreateResponse(HttpStatusCode.BadRequest, "No inquiry criteria");
-
-            IInquiryCriteria criteria = inquiryCriteria.Convert();
-            IInquiryCustomer customer = await _customerBusinessLogic.GetCustomer(criteria);
-            return CreateResponse(HttpStatusCode.OK, "");
-        }
-
-        // DELETE api/customers/x
-        public async Task<HttpResponseMessage> Delete(InquiryCriteriaViewmodel inquiryCriteria)
-        {
-            if (inquiryCriteria.customerID <= 0 && string.IsNullOrEmpty(inquiryCriteria.email))
-                return CreateResponse(HttpStatusCode.BadRequest, "No inquiry criteria");
-
-            IInquiryCriteria criteria = inquiryCriteria.Convert();
-            IInquiryCustomer customer = await _customerBusinessLogic.GetCustomer(criteria);
-            _customerBusinessLogic.Delete(customer.Id);
-
-            return CreateResponse(HttpStatusCode.NotFound, "");
-        }
     }
 }
