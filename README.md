@@ -11,4 +11,4 @@ What we have,
 * After a database has been created, a customer with id '1' with 6 transactions will be ready for test. (this case you'll get 5 recent transactions via an api calling according to a requirement)
 * On category 'unittest' was implemented following test requirement.
 * Swagger can be access via http://{endpoint}:{port}/swagger
-* GET /api/customers can be used as a debug due it returns 'all' customers with a full json content regardless to a requirement.
+* GET /api/customers can be used as a data debugging route due it returns 'all' customers with a full json content regardless to a requirement.
