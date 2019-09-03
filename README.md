@@ -1,8 +1,9 @@
 # TechnicalAssignmentTest
 What we have,
 1. IoC setup (SimpleInjector with a constructor automation injection)
-2. Unit tests (as a db integration, so we don't need to bother with SQL script)
-3. Swagger as a basic setup
+2. Object factory implement, get an instance from lazy init ObjectFactory.Getinstance<T> class instead of directly from container.
+3. Unit tests (as a db integration, so we don't need to bother with SQL script)
+4. Swagger as a basic setup
 
 # Remark
 * Please make sure running/testing machine is running on .NET framework 4.8 (the latest version) otherwise you may need to re-add a reference to 'system.xml' library to 'Customer.Inquiry.Service' project.
